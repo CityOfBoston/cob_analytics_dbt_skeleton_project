@@ -1,0 +1,56 @@
+version: 2
+
+macros:
+  - name: generate_lat_long_cols
+    description: >
+      Creates SQL statement to produce latitude and longitude from a geometry or (pair of XY) column(s).
+      Note that this only works for point data.
+      Will name columns x_longitude and y_latitude.
+      Optional override for each column name, free text input.
+      Requires either a geometry or (pair of XY) column name(s), SRID of input.
+      Also has boolean parameter to adjust for text (WKT type) data.
+    arguments:
+      - name: geom_input_col
+        type: string
+        description: >
+          Name of geometry source column. 
+          If input is a single geometry column use this, otherwise use X and Y column parameters.
+          TODO: do we need to enter 'none' when not using?
+      - name: input_srid
+        type: integer
+        description: >
+          SRID of original geometry data.
+          Latitude-Longitude coordinates are SRID 4326.
+          XY in other SRID's are possible, this macro will transform those to 4326.         
+      - name: x_input_col
+        type: string
+        description: >
+          Name of geometry X-coordinate (or longitude) source column. 
+          If input is two column coordinates use this, otherwise use geom_input_col parameter.
+          DEFAULT: none
+      - name: y_input_col
+        type: string
+        description: >
+          Name of geometry Y-coordinate (or latitude) source column. 
+          If input is two column coordinates use this, otherwise use geom_input_col parameter.
+          DEFAULT: none
+      - name: is_wkt_input
+        type: boolean
+        description: >
+          Does geometry input column contain WKT format data?
+          Will add a function ST_GeomFromText() to change WKT to binary geometry data.
+          DEFAULT: false
+      - name: override_x_colname
+        type: string
+        description: >
+          Use if more naming flexibility is needed, such as multiple geometry sources in a table.
+          Preferred: add a prefix to a standard name such as "case_x_longitude".
+          Will NOT add any auto-generated column names, this param overrides.
+          DEFAULT: none
+      - name: override_y_colname
+        type: string
+        description: >
+          Use if more naming flexibility is needed, such as multiple geometry sources in a table.
+          Preferred: add a prefix to a standard name such as "case_y_latitude".
+          Will NOT add any auto-generated column names, this param overrides.
+          DEFAULT: none

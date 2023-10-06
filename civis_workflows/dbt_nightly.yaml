@@ -1,0 +1,55 @@
+######################################################################
+# Transform - dbt - Nightly
+######################################################################
+
+version: '2.0'
+workflow:
+
+  ######################################################################
+  # Credentials
+  ######################################################################
+
+  # Civis Postgres Database
+  civis_credential_id: &civis_credential_id 12345
+
+  ######################################################################
+  # Default variables
+  ######################################################################
+
+  default_required_resources: &default_required_resources
+    required_resources:
+      cpu: 512
+      memory: 512
+      disk_space: 1
+
+  default_docker_container: &default_docker_container
+    docker_image_name: bostongov/dbt
+    docker_image_tag: 1.0.0
+
+  github: &github
+    repo_http_uri: github.com/CityOfBoston/repo_name_here.git
+    repo_ref: main
+
+  ######################################################################
+  # Tasks
+  ######################################################################
+
+  tasks:
+    dbt_nightly_build_internal_open:
+      action: civis.scripts.container
+      input:
+        name: 'dbt nightly transform'
+        <<: *default_required_resources
+        <<: *default_docker_container
+        <<: *github
+        docker_command: |
+          cd /app/analytics
+          export DBT_PROFILES_DIR='.' &&
+          dbt deps &&
+          dbt source freshness --select internal.*,tag:nightly open.*,tag:nightly --exclude tag:static tag:triggered tag:restricted_sources &&
+          dbt build --target prod --select internal.*,tag:nightly open.*,tag:nightly --exclude tag:static tag:triggered tag:restricted_sources
+        params:
+          - name: CIVIS_POSTGRES_CREDENTIAL
+            type: credential_redshift
+        arguments:
+          CIVIS_POSTGRES_CREDENTIAL: *civis_credential_id

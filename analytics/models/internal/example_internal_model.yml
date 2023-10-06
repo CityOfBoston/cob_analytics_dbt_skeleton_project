@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: example_internal_model
+    description: ""
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: id
+        data_type: integer
+        description: ""
+
+      - name: email
+        data_type: character varying
+        description: ""
+
+      - name: updated_timestamp
+        data_type: timestamp with time zone
+        description: ""

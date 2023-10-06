@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"terminal.integrated.env.windows": {
+			"DBT_PROFILES_DIR": ".",
+			"CIVIS_POSTGRES_CREDENTIAL_USERNAME": "username",
+			"CIVIS_POSTGRES_CREDENTIAL_PASSWORD": "password",
+		},
+		"python.envFile": "${workspaceFolder}\\.env",
+		"python.defaultInterpreterPath": "${workspaceFolder}\\.dbtenv\\Scripts\\python.exe",
+		"files.associations": {
+			"*.sql": "jinja-sql"
+		},
+		"[jinja-sql]": {
+			"editor.defaultFormatter": "innoverio.vscode-dbt-power-user"
+		},
+		"python.terminal.activateEnvInCurrentTerminal": true,
+		"dbt.queryLimit": 500
+	},
+	"extensions": {
+		"recommendations": [
+			"boston.boston-data-engineering",
+			"innoverio.vscode-dbt-power-user",
+			"bastienboutonnet.vscode-dbt",
+			"mechatroner.rainbow-csv"
+		]
+	}
+}

@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: example_open_model
+    description: ""
+    columns:
+      - name: objectid
+        data_type: integer
+        description: ""
+      - name: name
+        data_type: text
+        description: ""
+      - name: shape_text
+        data_type: text
+        description: ""
+      - name: geom_multipolygon_2249
+        data_type: geometry
+        description: ""
+      - name: _ingest_datetime
+        data_type: timestamp with time zone
+        description: ""
+
+

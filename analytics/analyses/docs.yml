@@ -1,0 +1,9 @@
+version: 2
+
+analyses:
+  - name: codegen_macros
+    docs:
+      show: false
+  - name: scratch
+    docs:
+      show: false

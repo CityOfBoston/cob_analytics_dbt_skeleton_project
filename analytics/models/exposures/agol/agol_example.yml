@@ -1,0 +1,18 @@
+version: 2
+
+exposures:
+
+  - name: agol_example
+    label: "AGOL: Example"
+    type: application
+    maturity: low
+    url: https://boston.maps.arcgis.com/home/item.html?id=#################
+    description: >
+      This is an example of an ArcGIS Online Feature Layer, updated by a dbt model
+
+    depends_on:
+      - ref('dept_project_agol')
+
+    owner:
+      name: Department Name
+      email: dept_email@boston.gov

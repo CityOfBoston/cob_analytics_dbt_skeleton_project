@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: restricted_stg
+    description: ""
+    tables:
+      - name: example_restricted_source
+        description: ""
+        freshness: 
+          warn_after: {count: 1, period: day}
+        loaded_at_field: _ingest_datetime
+        tests:
+          - dbt_expectations.expect_table_row_count_to_be_between:
+              min_value: 1
+        columns:
+          - name: deptid
+            data_type: text
+            description: ""
+            tests:
+              - not_null
+              - unique
+          - name: effdt
+            data_type: date
+            description: ""
+          - name: eff_status
+            data_type: text
+            description: ""
+          - name: descr
+            data_type: text
+            description: ""
+          - name: lastupddttm
+            data_type: timestamp without time zone
+            description: ""
+          - name: _ingest_datetime
+            data_type: text
+            description: ""
+

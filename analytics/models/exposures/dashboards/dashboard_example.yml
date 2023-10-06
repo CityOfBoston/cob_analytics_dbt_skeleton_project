@@ -1,0 +1,18 @@
+version: 2
+
+exposures:
+
+  - name: dashboard_example
+    label: "Dashboard: Example"
+    type: dashboard
+    maturity: low
+    url: https://dashboard.boston.gov/link_here
+    description: '{{ doc("dashboard_example") }}'
+    depends_on:
+      - ref('example_model')
+      - ref('another_example_model')
+
+    owner:
+      name: Analyst Name
+      email: analyst_email@boston.gov
+      

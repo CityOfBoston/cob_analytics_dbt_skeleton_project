@@ -1,0 +1,61 @@
+version: 2
+
+macros:
+  - name: generate_geom_column
+    description: >
+      Creates SQL statement to produce a geometry column.
+      Will cast columns to the appropriate geometry(type,SRID) typmods.
+      Will produce geometry columns in chosen output SRID.
+      Requires either a geometry or (pair of XY) column name(s), SRID of input and output, shape type of input.
+      Also has boolean parameter to adjust for text (WKT type) data.
+      Will name columns in the pattern "geom_<geom_type>_<output_srid>", ie geom_point_2249 or geom_multipolygon_4326.
+      Standard name can be overridden using a free input parameter override_colname.
+    arguments:
+      - name: geom_input_col
+        type: string
+        description: >
+          Name of geometry source column. 
+          If input is a single geometry column use this, otherwise use XY parameters.
+          TODO: do we need to enter 'none' when not using?
+      - name: geom_type
+        type: string
+        description: >
+          Geometry shape type, aka point, linestring, polygon, multipolygon, etc.
+          Will be used to generate column name unless overridden.
+          Enter "multi" type name if ANY multi-shapes exist (ie use "multipolygon" if data is both polygon and multipolygon).
+          Macro will look for types starting with "multi" and use ST_Multi() function to convert mixed single and multi type to all multi.
+          Enter "point" if using XY input columns.
+      - name: input_srid
+        type: integer
+        description: >
+          SRID of original geometry data.
+          Latitude-Longitude coordinates are SRID 4326. XY in other SRID's are possible.         
+      - name: output_srid
+        type: integer
+        description: >
+          SRID of output geometry column.
+      - name: x_input_col
+        type: string
+        description: >
+          Name of geometry X-coordinate (or longitude) source column. 
+          If input is two column coordinates use this, otherwise use geom_input_col parameter.
+          DEFAULT: none
+      - name: y_input_col
+        type: string
+        description: >
+          Name of geometry Y-coordinate (or latitude) source column. 
+          If input is two column coordinates use this, otherwise use geom_input_col parameter.
+          DEFAULT: none
+      - name: is_wkt_input
+        type: boolean
+        description: >
+          Does geometry input column contain WKT format data?
+          Will add a function ST_GeomFromText() to change WKT to binary geometry data.
+          DEFAULT: false
+      - name: override_colname
+        type: string
+        description: >
+          Use if more naming flexibility is needed, such as multiple geometry sources in a table.
+          Preferred: add a prefix to a standard name such as "case_geom_point_2249".
+          Will NOT add any auto-generated column names, this param overrides.
+          DEFAULT: none

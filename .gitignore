@@ -1,0 +1,7 @@
+.dbtenv
+# .env 
+logs/
+*/target/
+*/dbt_packages/
+*/logs/
+*/.user.yml

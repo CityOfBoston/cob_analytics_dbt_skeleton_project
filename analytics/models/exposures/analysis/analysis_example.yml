@@ -1,0 +1,18 @@
+version: 2
+
+exposures:
+
+  - name: analysis_example
+    label: "Analysis: Example"
+    type: analysis
+    maturity: low
+    url: https://github.com/link_to_analysis_code
+    description: >
+      This is an example of an analysis (i.e. in a Jupyter notebook) that relies on dbt models
+    depends_on:
+      - ref('dept_project_table1_df')
+      - ref('dept_project_table2_df')
+
+    owner:
+      name: Analyst Name
+      email: analyst_email@boston.gov

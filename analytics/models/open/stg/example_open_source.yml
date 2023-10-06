@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: open_stg
+    description: ""
+    tables:
+      - name: example_open_source
+        description: ""
+        freshness: 
+          warn_after: {count: 1, period: day}
+        loaded_at_field: _ingest_datetime
+        tests:
+          - dbt_expectations.expect_table_row_count_to_be_between:
+              min_value: 1
+        columns:
+          - name: objectid
+            data_type: integer
+            description: ""
+          - name: name
+            data_type: text
+            description: ""
+          - name: shape_text
+            data_type: text
+            description: ""
+          - name: _ingest_datetime
+            data_type: timestamp with time zone
+            description: ""
+

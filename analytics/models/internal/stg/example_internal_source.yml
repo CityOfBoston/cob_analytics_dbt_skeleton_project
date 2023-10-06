@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: internal_stg
+    description: ""
+    tables:
+      - name: example_internal_source
+        description: '{{ doc("example_internal_source") }}'
+        freshness: 
+          warn_after: {count: 1, period: day}
+        loaded_at_field: _ingest_datetime
+        tests:
+          - dbt_expectations.expect_table_row_count_to_be_between:
+              min_value: 1
+        columns:
+          - name: id
+            data_type: integer
+            description: ""
+            tests:
+              - not_null
+              - unique
+          - name: email
+            data_type: character varying
+            description: ""
+            tests:
+              - not_null
+          - name: _ingest_datetime
+            data_type: timestamp with time zone
+            description: ""
+

@@ -1,0 +1,72 @@
+name: 'analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'civis'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+asset-paths: ["assets"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# These settings can be overridden in the individual model files using the `{{ config(...) }}` macro.
+models:
+  analytics:
+    open:
+      +materialized: table
+      +schema: open
+      +grants:
+        select: ['all_open_data_user_group']
+      +persist_docs:
+        relation: true
+        columns: true
+    internal:
+      +materialized: table
+      +schema: internal
+      +grants:
+        select: ['all_internal_data_user_group']
+      +persist_docs:
+        relation: true
+        columns: true
+    restricted:
+      +materialized: table
+      +schema: restricted
+      +persist_docs:
+        relation: true
+        columns: true
+  elementary:
+    +schema: dbt_tests_internal
+    +docs:
+      show: false
+  dbt_utils:
+    +docs:
+      show: false 
+  dbt_expectations:
+    +docs:
+      show: false 
+  codegen:
+    +docs:
+      show: false 
+  audit_helper:
+    +docs:
+      show: false 
+  dbt_date:
+    +docs:
+      show: false 
+
+# Configuring tests
+tests:
+  +store_failures: true # all tests
+  +schema: dbt_tests_internal

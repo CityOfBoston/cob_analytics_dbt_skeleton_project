@@ -1,0 +1,18 @@
+version: 2
+
+exposures:
+
+  - name: ckan_example
+    label: "CKAN: Example"
+    type: application
+    maturity: low
+    url: https://data.boston.gov/dataset/example
+    description: >
+      This is an example of an open dataset on Analyze Boston (powered by CKAN) being updated by a dbt model
+
+    depends_on:
+      - ref('dept_dataset_ckan')
+
+    owner:
+      name: Department Name
+      email: department_email@boston.gov

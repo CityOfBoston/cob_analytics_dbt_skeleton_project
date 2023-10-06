@@ -1,0 +1,102 @@
+/*******************************************************
+* Custom css for dbt docs site.
+*
+* Used Gitlab's dbt docs stylesheet as a starting point:
+* https://gitlab.com/gitlab-data/analytics/blob/master/transform%2Fsnowflake-dbt%2Fdocs%2Fgitlab.css
+*
+* Tried to adhere to Boston branding guidelines:
+* https://www.boston.gov/departments/innovation-and-technology/brand-guidelines
+********************************************************/
+
+/* Import fonts */
+/* Note: Its better to load in html <head>, but this will be more maintainable. */
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Lora&display=swap');
+
+img.logo {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+}
+
+body {
+    font-family: 'Lora' !important;
+    font-size: 17px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat' !important;
+    font-weight: bold;
+}
+
+/* Warning: This selector is specific to the current overview page title. */
+#analytics-data-catalog {
+    font-size: 4rem !important;
+    text-align: center !important;
+}
+
+p {
+    font-family: 'Lora';
+    font-size: 16px;
+}
+
+.btn-info {
+    background-color: #FB4D42 !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 2px #FB4D42, 0 15px 15px -7.5px rgba(0,0,0,0.15) !important;
+}
+
+.a {
+    /*color: #FB4D42 !important;*/
+    color: #288BE4 !important;
+}
+
+.app-content p {
+    color: #1f1f1f;
+}
+
+.app-content a {
+    /*color: #FB4D42 !important;*/
+    color: #288BE4 !important;
+}
+
+.app-content a.btn-primary {
+    background-color: #FB4D42 !important;
+    color: white !important;
+}
+
+.menu a.menu-node.active:not(.not-active) {
+    color: #FB4D42 !important;
+}
+
+.menu a {
+    color: #1f1f1f !important;
+}
+
+.tooltip {
+    background-color: #FB4D42 !important;
+}
+
+.launcher-window {
+    background-color: #091F2F !important;
+}
+
+.bg-navy {
+    background-color: #091F2F !important;
+}
+
+.text-navy-lightest {
+    color: #288BE4 !important;
+}
+
+/* Change style of Schema Design image */
+img[alt="Schema Design"] {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.nav-tabs>li.active a{
+    color: black !important;
+}

@@ -1,0 +1,21 @@
+civis:
+  target: dev
+  outputs:
+    prod:
+      type: postgres
+      host: host_address
+      user: "{{ env_var('CIVIS_POSTGRES_CREDENTIAL_USERNAME') }}"
+      password: "{{ env_var('CIVIS_POSTGRES_CREDENTIAL_PASSWORD') }}"
+      port: port_number
+      dbname: database_name
+      schema: prod
+      threads: 4
+    dev:
+      type: postgres
+      host: host_address
+      user: "{{ env_var('CIVIS_POSTGRES_CREDENTIAL_USERNAME') }}"
+      password: "{{ env_var('CIVIS_POSTGRES_CREDENTIAL_PASSWORD') }}"
+      port: port_number
+      dbname: database_name
+      schema: dev
+      threads: 4
