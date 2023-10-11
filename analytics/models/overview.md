@@ -44,9 +44,9 @@ Note that you can also right-click on models to interactively filter and explore
 
 The Analytics Data Warehouse is a [PostgreSQL](https://getdbt.slack.com/archives/C01NH3F2E05/p1694461283130219) (+[PostGIS](https://postgis.net/)) database hosted on AWS by [Civis Analytics](https://www.civisanalytics.com/). You can query the database by either signing in to [Civis Platform](https://platform.civisanalytics.com/spa/) or by connecting directly to the database using your database credentials with an application like [DBeaver](https://dbeaver.io/).
 
-If you do not have database credentials to connect directly to the database and would like access to the database, please contact the Engineering team at [etldevelopers@cityofboston.gov](mailto:etldevelopers@cityofboston.gov).
+If you do not have database credentials to connect directly to the database and would like access to the database, please contact the Engineering team at [team_email_here@cityofboston.gov]().
 
-All production data ready for use is located in the production schemas, `open_prod`, `internal_prod`, and `restricted_prod`. If you do not have access to a dataset that you need access to, please submit a request to the Analytics Team at [analyticsteam@boston.gov](mailto:analyticsteam@boston.gov).
+All production data ready for use is located in the production schemas, `open_prod`, `internal_prod`, and `restricted_prod`. If you do not have access to a dataset that you need access to, please submit a request to the Analytics Team at [team_email_here@boston.gov]().
 
 The following diagram illustrates how data moves through the new set of schemas to end up in the production schemas:
 
@@ -56,11 +56,11 @@ The following diagram illustrates how data moves through the new set of schemas 
 
 ## Questions? Contact us!
 
-If you have any questions about this documentation site or the data warehouse, please email the Analytics Team Engineering Team at [etldevelopers@cityofboston.gov](mailto:etldevelopers@cityofboston.gov). 
+If you have any questions about this documentation site or the data warehouse, please email the Analytics Team Engineering Team at [team_email_here@cityofboston.gov](). 
 
-If you would like to request access to the database or a specific table, please email the Analytics team at [analyticsteam@boston.gov](mailto:analyticsteam@boston.gov).
+If you would like to request access to the database or a specific table, please email the Analytics team at [team_email_here@boston.gov]().
 
-If you have a project request for the Analytics team, including requests to add datasets to the data warehouse, please fill out the [project request form](https://app.smartsheet.com/b/form/be7fafeb89f0483e99f9f25ce9f1e661).
+If you have a project request for the Analytics team, including requests to add datasets to the data warehouse, please fill out the [project request form]().
 
 Curious about the [Analytics Team](https://www.boston.gov/departments/analytics-team) and what we do? Check out [Our 2020 Vision](https://www.boston.gov/sites/default/files/file/2020/02/5%20Years%20Analytics.pdf).
 
